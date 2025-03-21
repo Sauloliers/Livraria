@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Livraria
 {
@@ -23,7 +24,7 @@ namespace Livraria
         SqlConnection cn = new SqlConnection(@"Data Source=SAULOLIERS\SQLEXPRESS;integrated security=SSPI;initial Catalog=db_livraria");
 
         //[SqlCommand] classe objeto disponível para enviar as instruções(selec, insert,update, delete, etc)
-        ////SqlCommand cm = new SqlCommand(); foi posto la em baixo
+        SqlCommand cm = new SqlCommand();
         //[SqlDataReader] responsavel por receber os dados de uma tabela após execução de um select
         SqlDataReader dt;
         private void desabilitaCampos()
@@ -108,10 +109,12 @@ namespace Livraria
                     string senha = txtSenha.Text;
 
                     //fazendo um insert into gravando atendente
-                    string sql = "insert into tbl_atendente(ds_Login, ds_Senha,nm_Atendente) values(@login,@senha,@atendente)";
+                    string strsql = "insert into tbl_atendente(ds_Login, ds_Senha,nm_Atendente) values(@login,@senha,@atendente)";
 
-                    //(sql,cn) fala que quero executar sql na connection cn ou seja o cn fica valando que está no comando sql que por si joga na conexão aberta com o banco de dados la em cima
-                    SqlCommand cm = new SqlCommand(sql, cn);
+                    //cm.commandText passa o comando da string para o cm
+                    cm.CommandText = strsql;
+                    //cm.connection faz uma coneção do cm[comando] com o banco de dado que está no cn[conexão]
+                    cm.Connection = cn;             
 
                     //atribuindo valores
                     cm.Parameters.Add("@login", SqlDbType.VarChar).Value = login;
@@ -135,6 +138,44 @@ namespace Livraria
                 {
                     cn.Close();
                 }
+            }
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            if(txtBusca.Text != "")
+            {
+                try
+                {
+                    cn.Open();
+                    // em sistema da busca igual o abaixo, sempre uso o operador like diferente de outros casos que uso sinal de "=", e depois concatena o campo da busca
+                    // "%" fala que não importa o que tiver antes ou depois, exemplo santos, se tiver alguma coisa antes do santos ou depois ele vai mostrar esses campos que tem esse expreção
+                    cm.CommandText = "select * from tbl_atendente where nm_Atendente like ('%"+ txtBusca.Text + "%')";
+                    cm.Connection = cn;
+
+                    //SqlDataAdapter classe (objeto) disponível para rececer os dados de uma tabela após a execução de um select.
+                    SqlDataAdapter da = new SqlDataAdapter();
+
+                    //o objeto DataTable pode representar uma ou mais tabelas de dados, as quais permanecem alocadas em memórias e pode ser manipulado atrvés de métodos.
+                    DataTable dt = new DataTable();
+
+                    //recebendo os dados da instrução select
+                    da.SelectCommand = cm;
+                    //vou preencher a tabela com os dados da consulta que foi feito
+                    da.Fill(dt);
+                    //DataSource destino dos dados da pesquisa da tabela
+                    dgvFunc.DataSource = dt;
+                    cn.Close();
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show(erro.Message);
+                }
+            }
+            else
+            {
+                // se a caixa de texto estiver vazio não vai aparecer nada la dentro
+                dgvFunc.DataSource = null;
             }
         }
     }
