@@ -30,6 +30,8 @@ namespace Livraria
         private void desabilitaCampos()
         {
             //[Enabled] é para abilitar o campo, como esta falso desabilita
+            lblCodigo.Visible = false;
+            lbl_Cod.Visible = false;
             txtNome.Enabled = false;
             txtLogin.Enabled = false;
             txtSenha.Enabled = false;
@@ -48,6 +50,9 @@ namespace Livraria
             btnCancelar.Enabled = true;
             btnNovo.Enabled = false;
             txtNome.Focus();
+            //abaixo esta pedindo para limpar o txtBusca e dgvFunc
+            txtBusca.Text = "";
+            dgvFunc.DataSource = null;
 
         }
         private void limparCampos()
@@ -57,6 +62,22 @@ namespace Livraria
             txtLogin.Clear();
             txtSenha.Clear();
             txtNome.Focus();
+            txtBusca.Clear();
+            dgvFunc.DataSource= null;
+        }
+
+        private void manipularDados()
+        {
+            lblCodigo.Visible = true;
+            lbl_Cod.Visible = true;
+            btnAlterar.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnExcluir.Enabled= true;
+            btnGravar.Enabled = false;
+            btnNovo.Enabled = false;
+            txtNome.Enabled = true;
+            txtLogin.Enabled = true;
+            txtSenha.Enabled = true;
         }
         private void frmAtendente_Load(object sender, EventArgs e)
         {
@@ -125,7 +146,9 @@ namespace Livraria
                     cn.Open();
                     //[ExecuteNonQuery();] vai executar sem consulta só vai inserir(mas ela faz select, insert, delete, update etc)
                     cm.ExecuteNonQuery();
-                    MessageBox.Show("Os dados foram gravados com sucesso!!!", "Inserção de dados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //[cm.Parameters.Clear()] vai fazer a limpeza dos parametros para que possa ser usados de novo
+                    cm.Parameters.Clear();
+                    MessageBox.Show("Os dados foram gravados com sucesso!!!", "Inserção de dados concluida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     limparCampos();
                 }
                 catch (Exception erro)
@@ -176,6 +199,92 @@ namespace Livraria
             {
                 // se a caixa de texto estiver vazio não vai aparecer nada la dentro
                 dgvFunc.DataSource = null;
+            }
+        }
+        private void carregaAtendente()
+        {
+            //carregar atendente da tabela criada dentro do resultado da pesquisa
+            //a primeira parte é a colona[0] e o restante das informações são as linhas [0].[1].[2].[3] trazendo todas as informações selecionadas
+            lbl_Cod.Text = dgvFunc.SelectedRows[0].Cells[0].Value.ToString();
+            txtLogin.Text = dgvFunc.SelectedRows[0].Cells[1].Value.ToString();
+            txtSenha.Text = dgvFunc.SelectedRows[0].Cells[2].Value.ToString();
+            txtNome.Text = dgvFunc.SelectedRows[0].Cells[3].Value.ToString();
+            manipularDados();
+        }
+
+        private void dgvFunc_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            carregaAtendente();
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            //é obrigatorio fazer a validação para saber se o campo está vazio
+            if (txtNome.Text == "")
+            {
+                MessageBox.Show("Obrigatório infoemar o campo NOME.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNome.Focus();
+
+            }
+            else if (txtLogin.Text == "")
+            {
+                MessageBox.Show("Obrigatório infoemar o campo LOGIN.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLogin.Focus();
+            }
+            else if (txtSenha.Text == "")
+            {
+                MessageBox.Show("Obrigatório infoemar o campo SENHA.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSenha.Focus();
+            }
+            //[else if (txtSenha.Text.Length < 8)] se o tiver menos de 8 caracteres vai dar mensagem
+            else if (txtSenha.Text.Length < 8)
+            {
+                MessageBox.Show("O campo SENHA deve conter no mínimo 8 digitos.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSenha.Focus();
+            }
+            else
+            {
+                try
+                {
+                    //criamos 4 variáveis para receber o conteúdo dos txt
+                    string nome = txtNome.Text;
+                    string login = txtLogin.Text;
+                    string senha = txtSenha.Text;
+                    int cd = Convert.ToInt32( lbl_Cod.Text);
+
+                    //Fazendo o comando update para atualizar as informações que quero
+                    string strsql = "update tbl_atendente set ds_Login=@login,ds_Senha=@senha,nm_Atendente=@atendente where cd_Atendente=@cd";
+
+                    //cm.commandText passa o comando da string para o cm
+                    cm.CommandText = strsql;
+                    //cm.connection faz uma coneção do cm[comando] com o banco de dado que está no cn[conexão]
+                    cm.Connection = cn;
+
+                    //atribuindo valores
+                    cm.Parameters.Add("@login", SqlDbType.VarChar).Value = login;
+                    cm.Parameters.Add("@senha", SqlDbType.Char).Value = senha;
+                    cm.Parameters.Add("@atendente", SqlDbType.VarChar).Value = nome;
+                    cm.Parameters.Add("@cd", SqlDbType.Int).Value = cd;
+
+                    //abrindo conexão
+                    cn.Open();
+                    //[ExecuteNonQuery();] vai executar sem consulta só vai update(mas ela faz select, insert, delete, update etc)
+                    cm.ExecuteNonQuery();
+                    //[cm.Parameters.Clear()] vai limpar os paramentros para que possa ser ussado novamento o comando nele
+                    cm.Parameters.Clear();
+                    MessageBox.Show("Os dados foram alterados com sucesso!!!", "Alteração de dados concluida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limparCampos();
+                }
+                catch (Exception erro)
+                {
+                    //mensagem para o desenvolvedor pois é problema tecnico
+                    MessageBox.Show(erro.Message);
+                    cn.Close();
+                }
+                finally
+                {
+                    cn.Close();
+                }
             }
         }
     }
