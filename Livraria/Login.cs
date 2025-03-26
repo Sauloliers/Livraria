@@ -58,7 +58,8 @@ namespace Livraria
                     //[cn.Open();] abrir uma coneção com o banco de dados
                     cn.Open();
                     //[cm.CommandText] vai fazer um comando de texto nesse caso um select onde a o login e a senha do banco de dados tem que ser igual ao login e senha digitada pelo usuario
-                    cm.CommandText = "select * from tbl_atendente where ds_Login= ('" + txtLogin.Text + "') and  ds_Senha =('" + txtSenha.Text + "')";
+                    //[where ds_Status = 1] pare se logar faz o select para confirmar se existe na tabela e where para o status para ver se esta ativo = "1" senão não loga
+                    cm.CommandText = "select * from tbl_atendente where ds_Login= ('" + txtLogin.Text + "') and  ds_Senha =('" + txtSenha.Text + "') and ds_Status = 1";
                     //[cm.Connection = cn;] informa que esse comando de texto acima vai ser usado no cn
                     cm.Connection = cn;
                     //[dt = cm.ExecuteReader();] vai executar o comando cm, o momento em que vai fazer o select no banco e ele retorna na variável dt

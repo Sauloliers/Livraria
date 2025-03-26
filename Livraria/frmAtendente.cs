@@ -64,6 +64,9 @@ namespace Livraria
             txtNome.Focus();
             txtBusca.Clear();
             dgvFunc.DataSource= null;
+            rdbAtivo.Checked = true;
+            lblCodigo.Visible = false;
+            lbl_Cod.Visible = false;
         }
 
         private void manipularDados()
@@ -210,11 +213,30 @@ namespace Livraria
             txtSenha.Text = dgvFunc.SelectedRows[0].Cells[2].Value.ToString();
             txtNome.Text = dgvFunc.SelectedRows[0].Cells[3].Value.ToString();
             manipularDados();
+            string valor = dgvFunc.SelectedRows[0].Cells[4].Value.ToString();
+            //ele retorna o "True" e o "False" com letra maiuscula, por isso tem que informar no if como maiuscula
+             if(valor == "True")
+            {
+                rdbAtivo.Checked = true;
+            }
+            else
+            {
+                rdvInativo.Checked = true;
+            }
         }
 
         private void dgvFunc_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             carregaAtendente();
+            //vai fazer uma checagem se o rdbAtivo estiver "true" vai permitir btnExcluir se não bloquei o botão
+            if (rdbAtivo.Checked)
+            {
+                btnExcluir.Enabled = true;
+            }
+            else
+            {
+                btnExcluir.Enabled = false;
+            }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -284,6 +306,77 @@ namespace Livraria
                 finally
                 {
                     cn.Close();
+                }
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (txtNome.Text == "")
+            {
+                MessageBox.Show("Obrigatório infoemar o campo NOME.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNome.Focus();
+
+            }
+            else if (txtLogin.Text == "")
+            {
+                MessageBox.Show("Obrigatório infoemar o campo LOGIN.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtLogin.Focus();
+            }
+            else if (txtSenha.Text == "")
+            {
+                MessageBox.Show("Obrigatório infoemar o campo SENHA.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSenha.Focus();
+            }
+            //[else if (txtSenha.Text.Length < 8)] se o tiver menos de 8 caracteres vai dar mensagem
+            else if (txtSenha.Text.Length < 8)
+            {
+                MessageBox.Show("O campo SENHA deve conter no mínimo 8 digitos.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSenha.Focus();
+            }
+            else if (rdbAtivo.Checked)
+            {
+                MessageBox.Show("Para remover o registro você precisa alterar o starus para INATIVO", "Erro ao tentar Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                //[DialogResult] instancio com nome exclusao e jogo um caixa de messagem peguntando se quer remover mesmo o funcionario
+                DialogResult exclusao = MessageBox.Show("Você tem certeza que deja remover este registro?","Exclusão de registro",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                if(exclusao == DialogResult.No)
+                {
+                    return;
+                }
+                else
+                {
+                    try
+                    {
+                        //converto o lbl_Cod para string
+                        int cd = Convert.ToInt32(lbl_Cod.Text);
+                        cn.Open();
+                        string strsql = "update tbl_atendente set ds_Status = 0 where cd_Atendente =@cd";
+                        //cm.commandText passa o comando da string para o cm
+                        cm.CommandText = strsql;
+                        //cm.connection faz uma coneção do cm[comando] com o banco de dado que está no cn[conexão]
+                        cm.Connection = cn;
+                        cm.Parameters.Add("@cd", SqlDbType.Int).Value = cd;
+
+                        //[ExecuteNonQuery();] vai executar sem consulta só vai update(mas ela faz select, insert, delete, update etc)
+                        cm.ExecuteNonQuery();
+                        //[cm.Parameters.Clear()] vai limpar os paramentros para que possa ser ussado novamento o comando nele
+                        cm.Parameters.Clear();
+                        MessageBox.Show("A exclusão foi executada com sucesso!!!", "Exclusão de resistro concluida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        limparCampos();
+                    }
+                    catch (Exception erro) 
+                    {
+                        MessageBox.Show(erro.Message);
+                        cn.Close();
+                    }
+                    //mesmo que não der messagem de erro tem que fechar a conecção
+                    finally
+                    {
+                        cn.Close();
+                    }
                 }
             }
         }
