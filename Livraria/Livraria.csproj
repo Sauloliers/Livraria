@@ -52,6 +52,12 @@
     <Compile Include="frmAtendente.Designer.cs">
       <DependentUpon>frmAtendente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCliente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmCliente.Designer.cs">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAtendente.resx">
       <DependentUpon>frmAtendente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCliente.resx">
+      <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
@@ -172,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cadeado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\desligar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

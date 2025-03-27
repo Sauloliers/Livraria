@@ -18,6 +18,9 @@ namespace Livraria
         {
             InitializeComponent();
         }
+        //criar duas variáveis statica para que possa usar em outros lugares(formularios)
+        public static string usuario;
+        public static string codUsuario;
 
         //Estabelecendo Conexão com banco de dados sql server e instanciando [SqlConnection cn = new SqlConnection();]
         //abaixo falo [@"Data Source=SAULOLIERS\SQLEXPRESS;"] Data Source= logo apos o endereço [integrated security=SSPI] informa que estou usando autenticação do windons ou se não poderia ser atraves de usuario e senha mas não é o caso
@@ -27,7 +30,7 @@ namespace Livraria
         //[SqlCommand] classe objeto disponível para enviar as instruções(selec, insert,update, delete, etc)
         SqlCommand cm = new SqlCommand();
         //[SqlDataReader] responsavel por receber os dados de uma tabela após execução de um select
-        SqlDataReader dt;
+        //SqlDataReader dt; foi subistituido pelo SqlDataAdapter abaixo
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -63,11 +66,26 @@ namespace Livraria
                     //[cm.Connection = cn;] informa que esse comando de texto acima vai ser usado no cn
                     cm.Connection = cn;
                     //[dt = cm.ExecuteReader();] vai executar o comando cm, o momento em que vai fazer o select no banco e ele retorna na variável dt
-                    dt = cm.ExecuteReader();
+                    //dt = cm.ExecuteReader(); foi substituido pelo SqlDataAdapter abaixo
 
+                    //SqlDataAdapter classe (objeto) disponivel para receber os dados de uma tabela após a execução
+                    //ele vai receber o comando de texto do cm
+                    SqlDataAdapter da = new SqlDataAdapter(cm);
                     //[if (dt.HasRows)] pergunta se tem linhas na tabela
-                    if (dt.HasRows)
+
+                    //para receber a tabela 
+                    DataTable dt = new DataTable();
+
+                    //da.Fill(dt); vai preencher o datatable com essa consulta
+                    da.Fill(dt);
+
+                    //if (dt.HasRows) seria usado com o camando SqlDataReader dt; mais ele foi substituido pelo SqlDataAdapter da = new SqlDataAdapter(cm);
+
+                    if (dt.Rows.Count > 0) // a contagem de linhas no datatable é maior que zero? ou seja quando ele retornar uma informação do usuario que está logando e tem no banco de dados
                     {
+                        //falando que se encontrar na linha [0] e 0 que é sempre o valor da primeira linha, vai falar para pegar e jogar na string usuario o nome do login
+                        usuario = dt.Rows[0]["ds_Login"].ToString();
+                        codUsuario = dt.Rows[0]["cd_Atendente"].ToString();
                         //[frmMenu menu = new frmMenu();] instanciando a janela caso o logon de certo abre o
                         frmMenu menu = new frmMenu();
                         //[menu.Show();] chamando para abrir frmMenu

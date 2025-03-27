@@ -123,6 +123,10 @@ namespace Livraria
                 MessageBox.Show("O campo SENHA deve conter no mínimo 8 digitos.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSenha.Focus();
             }
+            else if (rdbInativo.Checked)
+            {
+                MessageBox.Show("Impossível cadastrar um funcionário se o STATUS estiver INATIVO.", "Erro ao tentar Gravar o registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else 
             {
                 try
@@ -133,7 +137,7 @@ namespace Livraria
                     string senha = txtSenha.Text;
 
                     //fazendo um insert into gravando atendente
-                    string strsql = "insert into tbl_atendente(ds_Login, ds_Senha,nm_Atendente) values(@login,@senha,@atendente)";
+                    string strsql = "insert into tbl_atendente(ds_Login, ds_Senha,nm_Atendente,ds_Status) values(@login,@senha,@atendente,1)";
 
                     //cm.commandText passa o comando da string para o cm
                     cm.CommandText = strsql;
@@ -221,7 +225,7 @@ namespace Livraria
             }
             else
             {
-                rdvInativo.Checked = true;
+                rdbInativo.Checked = true;
             }
         }
 
@@ -264,6 +268,10 @@ namespace Livraria
                 MessageBox.Show("O campo SENHA deve conter no mínimo 8 digitos.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtSenha.Focus();
             }
+            else if (rdbInativo.Checked)
+            {
+                MessageBox.Show("Para INATIVAR um funcionário é preciso clicar no botão REMOVER.", "Erro na operação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 try
@@ -275,7 +283,7 @@ namespace Livraria
                     int cd = Convert.ToInt32( lbl_Cod.Text);
 
                     //Fazendo o comando update para atualizar as informações que quero
-                    string strsql = "update tbl_atendente set ds_Login=@login,ds_Senha=@senha,nm_Atendente=@atendente where cd_Atendente=@cd";
+                    string strsql = "update tbl_atendente set ds_Login=@login,ds_Senha=@senha,nm_Atendente=@atendente, ds_Status=1 where cd_Atendente=@cd";
 
                     //cm.commandText passa o comando da string para o cm
                     cm.CommandText = strsql;

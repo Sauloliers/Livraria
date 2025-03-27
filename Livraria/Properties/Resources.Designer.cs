@@ -153,6 +153,16 @@ namespace Livraria.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap desligar {
+            get {
+                object obj = ResourceManager.GetObject("desligar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap editora {
             get {
                 object obj = ResourceManager.GetObject("editora", resourceCulture);

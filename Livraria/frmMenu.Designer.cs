@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.pneMenu = new System.Windows.Forms.Panel();
+            this.lblusuarioLogado = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSair = new System.Windows.Forms.Button();
             this.btnCaixa = new System.Windows.Forms.Button();
             this.btnPedido = new System.Windows.Forms.Button();
             this.btnAutor = new System.Windows.Forms.Button();
@@ -41,18 +44,20 @@
             this.pneLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnllogosa = new System.Windows.Forms.Panel();
-            this.pnlFuncionariofunc = new System.Windows.Forms.Panel();
+            this.frmCliente1 = new Livraria.frmCliente();
             this.frmAtendente1 = new Livraria.frmAtendente();
             this.principal1 = new Livraria.principal();
             this.pneMenu.SuspendLayout();
             this.pneLogo.SuspendLayout();
             this.pnllogosa.SuspendLayout();
-            this.pnlFuncionariofunc.SuspendLayout();
             this.SuspendLayout();
             // 
             // pneMenu
             // 
             this.pneMenu.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.pneMenu.Controls.Add(this.lblusuarioLogado);
+            this.pneMenu.Controls.Add(this.label2);
+            this.pneMenu.Controls.Add(this.btnSair);
             this.pneMenu.Controls.Add(this.btnCaixa);
             this.pneMenu.Controls.Add(this.btnPedido);
             this.pneMenu.Controls.Add(this.btnAutor);
@@ -66,8 +71,50 @@
             this.pneMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pneMenu.Location = new System.Drawing.Point(0, 0);
             this.pneMenu.Name = "pneMenu";
-            this.pneMenu.Size = new System.Drawing.Size(220, 567);
+            this.pneMenu.Size = new System.Drawing.Size(220, 1033);
             this.pneMenu.TabIndex = 0;
+            this.pneMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.pneMenu_Paint);
+            // 
+            // lblusuarioLogado
+            // 
+            this.lblusuarioLogado.AutoSize = true;
+            this.lblusuarioLogado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblusuarioLogado.ForeColor = System.Drawing.Color.Yellow;
+            this.lblusuarioLogado.Location = new System.Drawing.Point(23, 533);
+            this.lblusuarioLogado.Name = "lblusuarioLogado";
+            this.lblusuarioLogado.Size = new System.Drawing.Size(0, 25);
+            this.lblusuarioLogado.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Yellow;
+            this.label2.Location = new System.Drawing.Point(23, 508);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(156, 25);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Usuário Logado:";
+            // 
+            // btnSair
+            // 
+            this.btnSair.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSair.FlatAppearance.BorderSize = 0;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSair.Image = global::Livraria.Properties.Resources.desligar;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(0, 451);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnSair.Size = new System.Drawing.Size(220, 40);
+            this.btnSair.TabIndex = 11;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnCaixa
             // 
@@ -220,6 +267,7 @@
             this.btnCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCliente.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCliente.UseVisualStyleBackColor = true;
+            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
             // btnFunc
             // 
@@ -239,6 +287,7 @@
             this.btnFunc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFunc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnFunc.UseVisualStyleBackColor = true;
+            this.btnFunc.Click += new System.EventHandler(this.btnFunc_Click);
             // 
             // pneLogo
             // 
@@ -263,30 +312,28 @@
             // 
             // pnllogosa
             // 
-            this.pnllogosa.Controls.Add(this.pnlFuncionariofunc);
+            this.pnllogosa.Controls.Add(this.frmCliente1);
+            this.pnllogosa.Controls.Add(this.frmAtendente1);
             this.pnllogosa.Controls.Add(this.principal1);
             this.pnllogosa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnllogosa.Location = new System.Drawing.Point(220, 0);
             this.pnllogosa.Name = "pnllogosa";
-            this.pnllogosa.Size = new System.Drawing.Size(879, 567);
+            this.pnllogosa.Size = new System.Drawing.Size(1682, 1033);
             this.pnllogosa.TabIndex = 1;
             // 
-            // pnlFuncionariofunc
+            // frmCliente1
             // 
-            this.pnlFuncionariofunc.Controls.Add(this.frmAtendente1);
-            this.pnlFuncionariofunc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFuncionariofunc.Location = new System.Drawing.Point(0, 0);
-            this.pnlFuncionariofunc.Name = "pnlFuncionariofunc";
-            this.pnlFuncionariofunc.Size = new System.Drawing.Size(879, 567);
-            this.pnlFuncionariofunc.TabIndex = 1;
+            this.frmCliente1.Location = new System.Drawing.Point(0, 0);
+            this.frmCliente1.Name = "frmCliente1";
+            this.frmCliente1.Size = new System.Drawing.Size(1711, 1048);
+            this.frmCliente1.TabIndex = 3;
             // 
             // frmAtendente1
             // 
-            this.frmAtendente1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.frmAtendente1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frmAtendente1.Location = new System.Drawing.Point(0, 0);
             this.frmAtendente1.Name = "frmAtendente1";
-            this.frmAtendente1.Size = new System.Drawing.Size(879, 567);
+            this.frmAtendente1.Size = new System.Drawing.Size(1711, 1048);
             this.frmAtendente1.TabIndex = 0;
             // 
             // principal1
@@ -294,24 +341,25 @@
             this.principal1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.principal1.Location = new System.Drawing.Point(0, 0);
             this.principal1.Name = "principal1";
-            this.principal1.Size = new System.Drawing.Size(879, 567);
+            this.principal1.Size = new System.Drawing.Size(1682, 1033);
             this.principal1.TabIndex = 0;
             // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 567);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.pnllogosa);
             this.Controls.Add(this.pneMenu);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenu";
+            this.Load += new System.EventHandler(this.frmMenu_Load);
             this.pneMenu.ResumeLayout(false);
+            this.pneMenu.PerformLayout();
             this.pneLogo.ResumeLayout(false);
             this.pneLogo.PerformLayout();
             this.pnllogosa.ResumeLayout(false);
-            this.pnlFuncionariofunc.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -332,7 +380,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnllogosa;
         private principal principal1;
-        private System.Windows.Forms.Panel pnlFuncionariofunc;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Label lblusuarioLogado;
+        private System.Windows.Forms.Label label2;
+        private frmCliente frmCliente1;
         private frmAtendente frmAtendente1;
     }
 }
