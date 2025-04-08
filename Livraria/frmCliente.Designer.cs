@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rdbInativo = new System.Windows.Forms.RadioButton();
             this.rdbAtivo = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtBusca = new System.Windows.Forms.TextBox();
-            this.dgvFunc = new System.Windows.Forms.DataGridView();
-            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.txtBuscaCli = new System.Windows.Forms.TextBox();
+            this.dgvCliente = new System.Windows.Forms.DataGridView();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lbl_Login = new System.Windows.Forms.Label();
-            this.lbl_Cod = new System.Windows.Forms.Label();
+            this.lbl_CodCli = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.lblFunc = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -59,19 +59,19 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.mskTel = new System.Windows.Forms.MaskedTextBox();
+            this.mskFone = new System.Windows.Forms.MaskedTextBox();
             this.mskCpf = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.mskCep = new System.Windows.Forms.MaskedTextBox();
+            this.lblCnpj = new System.Windows.Forms.Label();
             this.mskCnpj = new System.Windows.Forms.MaskedTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.cboPessoa = new System.Windows.Forms.ComboBox();
+            this.cboUf = new System.Windows.Forms.ComboBox();
+            this.txtLogradouro = new System.Windows.Forms.TextBox();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.txtBairro = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFunc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // rdbInativo
@@ -110,7 +110,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtBusca);
+            this.groupBox1.Controls.Add(this.txtBuscaCli);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(400, 399);
             this.groupBox1.Name = "groupBox1";
@@ -119,52 +119,52 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisa por Cliente";
             // 
-            // txtBusca
+            // txtBuscaCli
             // 
-            this.txtBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusca.Location = new System.Drawing.Point(89, 33);
-            this.txtBusca.MaxLength = 60;
-            this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(514, 30);
-            this.txtBusca.TabIndex = 4;
+            this.txtBuscaCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscaCli.Location = new System.Drawing.Point(89, 33);
+            this.txtBuscaCli.MaxLength = 60;
+            this.txtBuscaCli.Name = "txtBuscaCli";
+            this.txtBuscaCli.Size = new System.Drawing.Size(514, 30);
+            this.txtBuscaCli.TabIndex = 4;
             // 
-            // dgvFunc
+            // dgvCliente
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFunc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvFunc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFunc.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvFunc.Location = new System.Drawing.Point(400, 487);
-            this.dgvFunc.MultiSelect = false;
-            this.dgvFunc.Name = "dgvFunc";
-            this.dgvFunc.RowHeadersWidth = 51;
-            this.dgvFunc.RowTemplate.Height = 24;
-            this.dgvFunc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFunc.Size = new System.Drawing.Size(609, 152);
-            this.dgvFunc.TabIndex = 27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCliente.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvCliente.Location = new System.Drawing.Point(400, 487);
+            this.dgvCliente.MultiSelect = false;
+            this.dgvCliente.Name = "dgvCliente";
+            this.dgvCliente.RowHeadersWidth = 51;
+            this.dgvCliente.RowTemplate.Height = 24;
+            this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCliente.Size = new System.Drawing.Size(609, 152);
+            this.dgvCliente.TabIndex = 27;
             // 
-            // txtSenha
+            // txtNumero
             // 
-            this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.Location = new System.Drawing.Point(868, 262);
-            this.txtSenha.MaxLength = 8;
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(187, 27);
-            this.txtSenha.TabIndex = 22;
-            this.txtSenha.UseSystemPasswordChar = true;
+            this.txtNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumero.Location = new System.Drawing.Point(868, 262);
+            this.txtNumero.MaxLength = 8;
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(187, 27);
+            this.txtNumero.TabIndex = 22;
+            this.txtNumero.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -214,16 +214,16 @@
             this.lbl_Login.TabIndex = 14;
             this.lbl_Login.Text = "E-mail:";
             // 
-            // lbl_Cod
+            // lbl_CodCli
             // 
-            this.lbl_Cod.AutoSize = true;
-            this.lbl_Cod.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Cod.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lbl_Cod.Location = new System.Drawing.Point(493, 134);
-            this.lbl_Cod.Name = "lbl_Cod";
-            this.lbl_Cod.Size = new System.Drawing.Size(0, 29);
-            this.lbl_Cod.TabIndex = 20;
-            this.lbl_Cod.Visible = false;
+            this.lbl_CodCli.AutoSize = true;
+            this.lbl_CodCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CodCli.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbl_CodCli.Location = new System.Drawing.Point(493, 134);
+            this.lbl_CodCli.Name = "lbl_CodCli";
+            this.lbl_CodCli.Size = new System.Drawing.Size(0, 29);
+            this.lbl_CodCli.TabIndex = 20;
+            this.lbl_CodCli.Visible = false;
             // 
             // lblCodigo
             // 
@@ -261,6 +261,7 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnExcluir
             // 
@@ -317,6 +318,7 @@
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNovo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // label4
             // 
@@ -408,15 +410,15 @@
             this.label12.TabIndex = 40;
             this.label12.Text = "CEP:";
             // 
-            // mskTel
+            // mskFone
             // 
-            this.mskTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskTel.Location = new System.Drawing.Point(868, 199);
-            this.mskTel.Mask = "(00)00000-0000";
-            this.mskTel.Name = "mskTel";
-            this.mskTel.Size = new System.Drawing.Size(187, 27);
-            this.mskTel.TabIndex = 41;
-            this.mskTel.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.mskFone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskFone.Location = new System.Drawing.Point(868, 199);
+            this.mskFone.Mask = "(00)00000-0000";
+            this.mskFone.Name = "mskFone";
+            this.mskFone.Size = new System.Drawing.Size(187, 27);
+            this.mskFone.TabIndex = 41;
+            this.mskFone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // mskCpf
             // 
@@ -428,116 +430,119 @@
             this.mskCpf.TabIndex = 42;
             this.mskCpf.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // maskedTextBox3
+            // mskCep
             // 
-            this.maskedTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox3.Location = new System.Drawing.Point(868, 322);
-            this.maskedTextBox3.Mask = "00000-000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(187, 27);
-            this.maskedTextBox3.TabIndex = 43;
-            this.maskedTextBox3.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.mskCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskCep.Location = new System.Drawing.Point(868, 322);
+            this.mskCep.Mask = "00000-000";
+            this.mskCep.Name = "mskCep";
+            this.mskCep.Size = new System.Drawing.Size(187, 27);
+            this.mskCep.TabIndex = 43;
+            this.mskCep.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // label13
+            // lblCnpj
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(739, 521);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(62, 22);
-            this.label13.TabIndex = 44;
-            this.label13.Text = "CNPJ:";
+            this.lblCnpj.AutoSize = true;
+            this.lblCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCnpj.Location = new System.Drawing.Point(792, 235);
+            this.lblCnpj.Name = "lblCnpj";
+            this.lblCnpj.Size = new System.Drawing.Size(62, 22);
+            this.lblCnpj.TabIndex = 44;
+            this.lblCnpj.Text = "CNPJ:";
+            this.lblCnpj.Visible = false;
             // 
             // mskCnpj
             // 
             this.mskCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskCnpj.Location = new System.Drawing.Point(807, 518);
+            this.mskCnpj.Location = new System.Drawing.Point(868, 232);
             this.mskCnpj.Mask = "00.000.000/0000-00";
             this.mskCnpj.Name = "mskCnpj";
             this.mskCnpj.Size = new System.Drawing.Size(187, 28);
             this.mskCnpj.TabIndex = 45;
             this.mskCnpj.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.mskCnpj.Visible = false;
             // 
-            // comboBox1
+            // cboPessoa
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cboPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPessoa.FormattingEnabled = true;
+            this.cboPessoa.Items.AddRange(new object[] {
             "Física",
             "Juridico"});
-            this.comboBox1.Location = new System.Drawing.Point(489, 229);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(270, 28);
-            this.comboBox1.TabIndex = 46;
+            this.cboPessoa.Location = new System.Drawing.Point(489, 229);
+            this.cboPessoa.Name = "cboPessoa";
+            this.cboPessoa.Size = new System.Drawing.Size(270, 28);
+            this.cboPessoa.TabIndex = 46;
+            this.cboPessoa.SelectedIndexChanged += new System.EventHandler(this.cboPessoa_SelectedIndexChanged);
             // 
-            // comboBox2
+            // cboUf
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cboUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboUf.FormattingEnabled = true;
+            this.cboUf.Items.AddRange(new object[] {
             "SP",
             "RJ",
             "MG",
             "PI",
             "ES",
             "PA"});
-            this.comboBox2.Location = new System.Drawing.Point(489, 349);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(92, 28);
-            this.comboBox2.TabIndex = 47;
+            this.cboUf.Location = new System.Drawing.Point(489, 349);
+            this.cboUf.Name = "cboUf";
+            this.cboUf.Size = new System.Drawing.Size(92, 28);
+            this.cboUf.TabIndex = 47;
             // 
-            // textBox1
+            // txtLogradouro
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(489, 259);
-            this.textBox1.MaxLength = 20;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(270, 27);
-            this.textBox1.TabIndex = 48;
+            this.txtLogradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogradouro.Location = new System.Drawing.Point(489, 259);
+            this.txtLogradouro.MaxLength = 20;
+            this.txtLogradouro.Name = "txtLogradouro";
+            this.txtLogradouro.Size = new System.Drawing.Size(270, 27);
+            this.txtLogradouro.TabIndex = 48;
             // 
-            // textBox2
+            // txtComplemento
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(489, 289);
-            this.textBox2.MaxLength = 20;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(270, 27);
-            this.textBox2.TabIndex = 49;
+            this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComplemento.Location = new System.Drawing.Point(489, 289);
+            this.txtComplemento.MaxLength = 20;
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(270, 27);
+            this.txtComplemento.TabIndex = 49;
             // 
-            // textBox3
+            // txtCidade
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(489, 319);
-            this.textBox3.MaxLength = 20;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(270, 27);
-            this.textBox3.TabIndex = 50;
+            this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCidade.Location = new System.Drawing.Point(489, 319);
+            this.txtCidade.MaxLength = 20;
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(270, 27);
+            this.txtCidade.TabIndex = 50;
             // 
-            // textBox4
+            // txtBairro
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(868, 292);
-            this.textBox4.MaxLength = 8;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(187, 27);
-            this.textBox4.TabIndex = 51;
-            this.textBox4.UseSystemPasswordChar = true;
+            this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBairro.Location = new System.Drawing.Point(868, 292);
+            this.txtBairro.MaxLength = 8;
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(187, 27);
+            this.txtBairro.TabIndex = 51;
+            this.txtBairro.UseSystemPasswordChar = true;
             // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.txtBairro);
+            this.Controls.Add(this.txtCidade);
+            this.Controls.Add(this.txtComplemento);
+            this.Controls.Add(this.txtLogradouro);
+            this.Controls.Add(this.cboUf);
+            this.Controls.Add(this.cboPessoa);
             this.Controls.Add(this.mskCnpj);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.maskedTextBox3);
+            this.Controls.Add(this.lblCnpj);
+            this.Controls.Add(this.mskCep);
             this.Controls.Add(this.mskCpf);
-            this.Controls.Add(this.mskTel);
+            this.Controls.Add(this.mskFone);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -556,21 +561,22 @@
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dgvFunc);
-            this.Controls.Add(this.txtSenha);
+            this.Controls.Add(this.dgvCliente);
+            this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lbl_Login);
-            this.Controls.Add(this.lbl_Cod);
+            this.Controls.Add(this.lbl_CodCli);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.lblFunc);
             this.Name = "frmCliente";
             this.Size = new System.Drawing.Size(1711, 1048);
+            this.Load += new System.EventHandler(this.frmCliente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFunc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -587,15 +593,15 @@
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtBusca;
-        private System.Windows.Forms.DataGridView dgvFunc;
-        private System.Windows.Forms.TextBox txtSenha;
+        private System.Windows.Forms.TextBox txtBuscaCli;
+        private System.Windows.Forms.DataGridView dgvCliente;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lbl_Login;
-        private System.Windows.Forms.Label lbl_Cod;
+        private System.Windows.Forms.Label lbl_CodCli;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Label lblFunc;
         private System.Windows.Forms.Label label4;
@@ -607,16 +613,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.MaskedTextBox mskTel;
+        private System.Windows.Forms.MaskedTextBox mskFone;
         private System.Windows.Forms.MaskedTextBox mskCpf;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.MaskedTextBox mskCep;
+        private System.Windows.Forms.Label lblCnpj;
         private System.Windows.Forms.MaskedTextBox mskCnpj;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox cboPessoa;
+        private System.Windows.Forms.ComboBox cboUf;
+        private System.Windows.Forms.TextBox txtLogradouro;
+        private System.Windows.Forms.TextBox txtComplemento;
+        private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.TextBox txtBairro;
     }
 }
