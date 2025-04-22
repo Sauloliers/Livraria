@@ -44,9 +44,9 @@
             this.pneLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnllogosa = new System.Windows.Forms.Panel();
-            this.frmCliente1 = new Livraria.frmCliente();
-            this.frmAtendente1 = new Livraria.frmAtendente();
             this.principal1 = new Livraria.principal();
+            this.frmAtendente1 = new Livraria.frmAtendente();
+            this.frmCliente1 = new Livraria.frmCliente();
             this.pneMenu.SuspendLayout();
             this.pneLogo.SuspendLayout();
             this.pnllogosa.SuspendLayout();
@@ -321,21 +321,6 @@
             this.pnllogosa.Size = new System.Drawing.Size(1682, 1033);
             this.pnllogosa.TabIndex = 1;
             // 
-            // frmCliente1
-            // 
-            this.frmCliente1.Location = new System.Drawing.Point(0, 0);
-            this.frmCliente1.Name = "frmCliente1";
-            this.frmCliente1.Size = new System.Drawing.Size(1711, 1048);
-            this.frmCliente1.TabIndex = 3;
-            // 
-            // frmAtendente1
-            // 
-            this.frmAtendente1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.frmAtendente1.Location = new System.Drawing.Point(0, 0);
-            this.frmAtendente1.Name = "frmAtendente1";
-            this.frmAtendente1.Size = new System.Drawing.Size(1711, 1048);
-            this.frmAtendente1.TabIndex = 0;
-            // 
             // principal1
             // 
             this.principal1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -343,6 +328,21 @@
             this.principal1.Name = "principal1";
             this.principal1.Size = new System.Drawing.Size(1682, 1033);
             this.principal1.TabIndex = 0;
+            // 
+            // frmAtendente1
+            // 
+            this.frmAtendente1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frmAtendente1.Location = new System.Drawing.Point(0, 0);
+            this.frmAtendente1.Name = "frmAtendente1";
+            this.frmAtendente1.Size = new System.Drawing.Size(1711, 1048);
+            this.frmAtendente1.TabIndex = 1;
+            // 
+            // frmCliente1
+            // 
+            this.frmCliente1.Location = new System.Drawing.Point(0, 3);
+            this.frmCliente1.Name = "frmCliente1";
+            this.frmCliente1.Size = new System.Drawing.Size(1711, 1048);
+            this.frmCliente1.TabIndex = 2;
             // 
             // frmMenu
             // 

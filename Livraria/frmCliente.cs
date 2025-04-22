@@ -127,5 +127,62 @@ namespace Livraria
             limparCampos();
             desabilitaCampos();
         }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            if (rdbInativo.Checked)
+            {
+                MessageBox.Show("Para inserir um cliente voçê precisa marcar o botão ativo", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                rdbAtivo.Checked = true;
+            }
+            else if(txtNome.Text == "")
+            {
+                MessageBox.Show("Obrigatório preencher o campo nome", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtNome.Focus();
+            }
+            else if (txtEmail.Text == "")
+            {
+                MessageBox.Show("Obrigatório informar o Email", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtEmail.Focus();
+            }
+            else if (mskFone.Text == "")
+            {
+                MessageBox.Show("Obrigatório informar o campo Telefone", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mskFone.Focus();
+            }
+            else if (mskFone.Text.Length < 11)
+            {
+                MessageBox.Show("Obrigatório informar número de Telefone válido", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mskFone.Focus();
+            }
+            //se não informar o tipo de pessoa manda erro, e fazer validações quanto a quantidades de caracteres
+            else if (cboPessoa.SelectedIndex == -1)
+            {
+                MessageBox.Show("Obrigatório informar o tipo de pessoa", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+            }
+            //vai escolher pessoa fisica e preencher vazio o cnpj
+            if(cboPessoa.SelectedIndex == 0)
+            {
+                mskCnpj.Text = "";
+                string cnpj = mskCnpj.Text;
+                if(mskCpf.Text.Length < 11)
+                {
+                    MessageBox.Show("Obrigatório informar um CPF válido", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mskCpf.Focus();
+                }
+            }
+            //vai escolher pessoa juridica e preencher vazio o cpf
+            if (cboPessoa.SelectedIndex == 1)
+            {
+                mskCpf.Text = "";
+                string cpf = mskCpf.Text;
+                if (mskCnpj.Text.Length < 14)
+                {
+                    MessageBox.Show("Obrigatório informar um CNPJ válido", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mskCnpj.Focus();
+                }
+            }
+        }
     }
 }
